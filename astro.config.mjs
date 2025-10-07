@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config'
 
 export default defineConfig({
-  site: 'https://NajimFS.github.io/',
-})
+  site: 'https://astronaut.github.io',
+  base: '/IIITHRIII',
+})  
