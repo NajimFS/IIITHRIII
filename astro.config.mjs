@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config'
 
 export default defineConfig({
-  site: 'https://iiithriii.com',
+  site: 'https://najimfs.github.io',
 })  
