@@ -1,0 +1,5 @@
+# robots.txt for https://najimfs.github.io/IIITHRIII
+User-agent: *
+Allow: /
+
+Sitemap: https://najimfs.github.io/IIITHRIII/sitemap.xml

@@ -1,69 +1,104 @@
 ---
 // SEO & metadata
 const siteUrl = 'https://najimfs.github.io/IIITHRIII';
-const title = 'IIITHRIII | Drum & Bass DJ & Producer in Montréal';
-const description = 'Montréal-based Drum & Bass DJ and producer shaped by breakcore and jungle. Known for intricate sound design, explosive live sets, and deep roots in the local underground scene.';
+const title = 'IIITHRIII | Drum & Bass DJ & Producer in Montréal | Art Director';
+const description = 'IIITHRIII is a Montréal-based Drum & Bass DJ and producer shaped by breakcore and jungle, also working as an Art Director in games and visual media. Known for intricate sound design, explosive live sets, and deep roots in the local underground scene.';
 const imageUrl = `${siteUrl}/images/iii_orange_organic.png`;
 const youtubeVideoId1 = 'XfEDohQeE4A'; // Live set
 const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
 ---
 
-<html lang="en">
+<html lang="en-CA">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="drum and bass, breakcore, jungle, montreal dj, iiithriii, electronic music canada, dnb producer montreal" />
-    <link rel="canonical" href={siteUrl} />
+    <meta name="keywords" content="IIITHRIII, Drum and Bass Montreal, DNB DJ Canada, breakcore producer, jungle music, Art Director Montreal, electronic music Montreal, live drum and bass set, Montréal underground DJ, sound design, visual artist" />
 
-    <!-- Favicon -->
+    <link rel="canonical" href={siteUrl} />
     <link rel="icon" href="/favicon.ico" />
 
-    <!-- Preconnect for performance -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://www.youtube.com" />
     <link rel="preconnect" href="https://iiithriii.bandcamp.com" />
     <link rel="preconnect" href="https://soundcloud.com" />
     <link rel="preconnect" href="https://instagram.com" />
+    <link rel="dns-prefetch" href="//youtube.com" />
+    <link rel="dns-prefetch" href="//bandcamp.com" />
+    <link rel="dns-prefetch" href="//soundcloud.com" />
 
-    <!-- Open Graph / Twitter -->
+    <!-- Open Graph -->
+    <meta property="og:locale" content="en_CA" />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content="IIITHRIII – Drum & Bass DJ, Producer, and Art Director from Montréal" />
     <meta property="og:url" content={siteUrl} />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_CA" />
+    <meta property="og:site_name" content="IIITHRIII" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content="IIITHRIII – Drum & Bass DJ, Producer, and Art Director from Montréal" />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "MusicGroup",
-        "@id": `${siteUrl}#musicgroup`,
-        "name": "IIITHRIII",
-        "genre": "Drum and Bass",
-        "description": description,
-        "image": imageUrl,
-        "location": { "@type": "Place", "name": "Montréal, Canada" },
-        "url": siteUrl,
-        "sameAs": [
-          "https://iiithriii.bandcamp.com",
-          "https://soundcloud.com/iiithriii",
-          "https://youtube.com/@IIITHRIII",
-          "https://instagram.com/iiithriii",
-          "https://www.najimfilali.com"
-        ]
-      })}
+      {JSON.stringify([
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Najim Filali Saksak",
+          "alternateName": "IIITHRIII",
+          "url": siteUrl,
+          "sameAs": [
+            "https://www.najimfilali.com",
+            "https://iiithriii.bandcamp.com",
+            "https://soundcloud.com/iiithriii",
+            "https://youtube.com/@IIITHRIII",
+            "https://instagram.com/iiithriii"
+          ],
+          "jobTitle": "Art Director",
+          "nationality": "Canadian",
+          "knowsAbout": ["Drum and Bass", "Sound Design", "Breakcore", "Jungle", "Environment Art", "Visual Direction", "Motion Design"],
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Art Director",
+            "occupationLocation": "Montréal, QC"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "MusicGroup",
+          "name": "IIITHRIII",
+          "genre": "Drum and Bass",
+          "description": "Montréal-based Drum & Bass project by Najim Filali Saksak, blending breakcore energy, jungle roots, and cinematic sound design.",
+          "image": imageUrl,
+          "url": siteUrl,
+          "sameAs": [
+            "https://iiithriii.bandcamp.com",
+            "https://soundcloud.com/iiithriii",
+            "https://youtube.com/@IIITHRIII",
+            "https://instagram.com/iiithriii"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Montréal, Canada"
+          },
+          "musicBy": "Najim Filali Saksak"
+        }
+      ])}
     </script>
 
-    <!-- Dark Mode Only Styles -->
     <style>
       body {
         background-color: #0f0f0f;
         color: #f0f0f0;
         margin: 0;
-        font-family: system-ui, -apple-system, sans-serif;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         line-height: 1.6;
       }
 
@@ -73,7 +108,6 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
         margin-bottom: 2rem;
       }
 
-      /* Logo with strong chromatic aberration + pulse */
       .logo {
         width: 240px;
         height: auto;
@@ -218,7 +252,6 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
   </head>
   <body>
     <main>
-      <!-- Hero Section -->
       <section class="hero">
         <img 
           class="logo" 
@@ -229,14 +262,12 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
         <h1>IIITHRIII</h1>
         <p><em>Montréal - Canada | Music Producer, DJ and Art Director</em></p>
 
-        <!-- LATEST TRACK -->
         <div class="latest-track">
           <a href="https://soundcloud.com/iiithriii/empire" target="_blank" rel="noopener">
             LATEST TRACK: EMPIRE
           </a>
         </div>
 
-        <!-- Links -->
         <div class="hero-links">
           <a href="https://instagram.com/iiithriii" target="_blank" rel="noopener">Instagram</a>
           <a href="https://iiithriii.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a>
@@ -247,7 +278,6 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
         </div>
       </section>
 
-      <!-- Video Grid -->
       <div class="video-grid">
         <div class="video-container">
           <iframe
@@ -269,14 +299,13 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
         </div>
       </div>
 
-      <!-- Bio -->
       <div class="bio">
         <p>
           IIITHRIII (pronounced i-three) is a Drum and Bass producer and DJ based in Montréal, Canada, shaped by breakcore’s chaotic energy and jungle’s raw power. Known for intricate sound design, relentless rhythms, and surgical precision, he pushes the boundaries of the Montréal underground Drum &amp; Bass scene with performances that are as explosive as they are technically refined.
         </p>
 
         <p>
-          He has shared the stage with respected artists such as Monty, Kid Koala, Sicknote, T & Sugah and more, building a reputation as a compelling live D&amp;B act in Montréal.
+          He has shared the stage with respected artists such as Monty, Kid Koala, Sicknote, T & Sugah and is also a member of "The Session", building a reputation as a compelling live D&amp;B act in Montréal. 
         </p>
 
         <blockquote>
@@ -284,11 +313,10 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
         </blockquote>
 
         <p>
-          Whether performing at local venues or crafting high-energy tracks in the studio, IIITHRIII delivers a distinctive Drum &amp; Bass experience rooted in Montréal’s electronic music culture.
+          In parallel, IIITHRIII works as an Art Director across games and visual media, bringing the same intensity and detail-oriented craft to environments, motion, and world-building. His creative practice bridges sonic and visual storytelling.
         </p>
       </div>
 
-      <!-- Portrait Photo -->
       <img
         class="portrait"
         src="/images/session.png"
