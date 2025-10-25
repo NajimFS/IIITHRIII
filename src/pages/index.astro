@@ -1,0 +1,284 @@
+---
+// SEO & metadata
+const siteUrl = 'https://najimfs.github.io/IIITHRIII';
+const title = 'IIITHRIII | Drum & Bass DJ & Producer in Montréal';
+const description = 'Montréal-based Drum & Bass DJ and producer shaped by breakcore and jungle. Known for intricate sound design, explosive live sets, and deep roots in the local underground scene.';
+const imageUrl = `${siteUrl}/images/iii_orange_organic.png`;
+const youtubeVideoId1 = 'XfEDohQeE4A'; // Live set
+const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={siteUrl} />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "MusicGroup",
+        "name": "IIITHRIII",
+        "genre": "Drum and Bass",
+        "location": { "@type": "Place", "name": "Montréal, Canada" },
+        "url": siteUrl,
+        "sameAs": [
+          "https://iiithriii.bandcamp.com",
+          "https://soundcloud.com/iiithriii",
+          "https://youtube.com/@IIITHRIII",
+          "https://instagram.com/iiithriii",
+          "https://www.najimfilali.com"
+        ]
+      })}
+    </script>
+
+    <!-- Dark Mode Only Styles -->
+    <style>
+      body {
+        background-color: #0f0f0f;
+        color: #f0f0f0;
+        margin: 0;
+        font-family: system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 3rem 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      /* Logo with strong chromatic aberration + pulse */
+      .logo {
+        width: 240px;
+        height: auto;
+        margin-bottom: 1.25rem;
+        filter: 
+          drop-shadow(5px 0 0 rgba(0, 100, 255, 0.65))   /* Blue right */
+          drop-shadow(-5px 0 0 rgba(255, 0, 80, 0.65))  /* Red left */
+          drop-shadow(0 0 14px rgba(255, 255, 255, 0.35));
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+          filter: 
+            drop-shadow(5px 0 0 rgba(0, 100, 255, 0.65))
+            drop-shadow(-5px 0 0 rgba(255, 0, 80, 0.65))
+            drop-shadow(0 0 14px rgba(255, 255, 255, 0.35));
+        }
+        50% {
+          transform: scale(1.04);
+          filter: 
+            drop-shadow(6px 0 0 rgba(0, 100, 255, 0.75))
+            drop-shadow(-6px 0 0 rgba(255, 0, 80, 0.75))
+            drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+        }
+      }
+
+      .latest-track {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 1rem 0;
+      }
+
+      .latest-track a {
+        color: #ff6b35;
+        text-decoration: none;
+        text-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
+      }
+
+      .latest-track a:hover {
+        text-decoration: underline;
+      }
+
+      .hero-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-top: 1rem;
+        padding: 0 1.5rem;
+      }
+
+      .hero-links a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+        padding: 0.6rem 1.2rem;
+        background: rgba(255,255,255,0.08);
+        border-radius: 24px;
+        transition: background 0.2s, transform 0.15s;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .hero-links a:hover {
+        background: rgba(255,255,255,0.15);
+        transform: translateY(-2px);
+      }
+
+      .video-grid {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 1fr;
+        max-width: 720px;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .video-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .video-container {
+        position: relative;
+        overflow: hidden;
+        padding-top: 56.25%;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .bio {
+        max-width: 680px;
+        margin: 2.5rem auto;
+        padding: 0 1.5rem;
+        text-align: left;
+        line-height: 1.7;
+        color: #e0e0e0;
+      }
+
+      .bio blockquote {
+        font-style: italic;
+        margin: 1.5rem 0;
+        padding-left: 1rem;
+        border-left: 3px solid #ff6b35;
+        color: #fff;
+      }
+
+      .bio a {
+        color: #ff6b35;
+        text-decoration: underline;
+      }
+
+      /* Portrait at the end */
+      .portrait {
+        display: block;
+        margin: 3rem auto;
+        width: 260px;
+        height: auto;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      }
+
+      h1, h2 {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <img class="logo" src="/images/iii_orange_organic.png" alt="IIITHRIII logo" />
+        <h1>IIITHRIII</h1>
+        <p><em>Montreal - Canada | Music Producer and Visual Artist</em></p>
+
+        <!-- LATEST TRACK: EMPIRE (linked) -->
+        <div class="latest-track">
+          <a href="https://soundcloud.com/iiithriii/empire" target="_blank" rel="noopener">
+            LATEST TRACK: EMPIRE
+          </a>
+        </div>
+
+        <!-- Links from Linktree (mentorship removed) -->
+        <div class="hero-links">
+          <a href="https://instagram.com/iiithriii" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://iiithriii.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a>
+          <a href="https://youtube.com/@IIITHRIII" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://www.najimfilali.com" target="_blank" rel="noopener">Visuals</a>
+          <a href="mailto:najim@thesoukfactory.com">Contact</a>
+        </div>
+      </section>
+
+      <!-- Video Grid -->
+      <div class="video-grid">
+        <div class="video-container">
+          <iframe
+            src={`https://www.youtube.com/embed/${youtubeVideoId1}?rel=0`}
+            title="IIITHRIII Live Set"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="video-container">
+          <iframe
+            src={`https://www.youtube.com/embed/${youtubeVideoId2}?start=998&rel=0`}
+            title="IIITHRIII Studio Session"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="bio">
+        <p>
+          IIITHRIII is a Drum and Bass producer and DJ based in Montréal, Canada, shaped by breakcore’s chaotic energy and jungle’s raw power. Known for intricate sound design, relentless rhythms, and surgical precision, he pushes the boundaries of the Montréal underground Drum &amp; Bass scene with performances that are as explosive as they are technically refined.
+        </p>
+
+        <p>
+          He has shared the stage with respected artists such as Monty, Kid Koala, Sicknote, Nagazaki, Iridium, and Okkoto, building a reputation as a compelling live D&amp;B act in Montréal.
+        </p>
+
+        <blockquote>
+          “I’m taking people on a journey through my world and influences. It’s about those moments when the music takes over completely—when you stop thinking and just feel every beat hit your chest.”
+        </blockquote>
+
+        <p>
+          Whether performing at local venues or crafting high-energy tracks in the studio, IIITHRIII delivers a distinctive Drum &amp; Bass experience rooted in Montréal’s electronic music culture.
+        </p>
+
+        <p style="margin-top: 1.25rem; font-size: 0.95rem;">
+          Explore visual art portfolio: <a href="https://www.najimfilali.com" target="_blank" rel="noopener">najimfilali.com</a>
+        </p>
+
+        <p style="margin-top: 0.5rem; font-size: 0.95rem;">
+          For bookings & collaborations: <a href="mailto:najim@thesoukfactory.com">najim@thesoukfactory.com</a>
+        </p>
+      </div>
+
+      <!-- Portrait Photo -->
+      <img
+        class="portrait"
+        src="/images/session.png"
+        alt="IIITHRIII – Drum & Bass DJ and Visual Artist in Montréal"
+      />
+    </main>
+  </body>
+</html>
