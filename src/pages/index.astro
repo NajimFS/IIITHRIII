@@ -14,7 +14,17 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content="drum and bass, breakcore, jungle, montreal dj, iiithriii, electronic music canada, dnb producer montreal" />
     <link rel="canonical" href={siteUrl} />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://www.youtube.com" />
+    <link rel="preconnect" href="https://iiithriii.bandcamp.com" />
+    <link rel="preconnect" href="https://soundcloud.com" />
+    <link rel="preconnect" href="https://instagram.com" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:title" content={title} />
@@ -22,6 +32,7 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
     <meta property="og:image" content={imageUrl} />
     <meta property="og:url" content={siteUrl} />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_CA" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Structured Data -->
@@ -29,8 +40,11 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
       {JSON.stringify({
         "@context": "https://schema.org",
         "@type": "MusicGroup",
+        "@id": `${siteUrl}#musicgroup`,
         "name": "IIITHRIII",
         "genre": "Drum and Bass",
+        "description": description,
+        "image": imageUrl,
         "location": { "@type": "Place", "name": "Montréal, Canada" },
         "url": siteUrl,
         "sameAs": [
@@ -65,8 +79,8 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
         height: auto;
         margin-bottom: 1.25rem;
         filter: 
-          drop-shadow(5px 0 0 rgba(0, 100, 255, 0.65))   /* Blue right */
-          drop-shadow(-5px 0 0 rgba(255, 0, 80, 0.65))  /* Red left */
+          drop-shadow(5px 0 0 rgba(0, 100, 255, 0.65))
+          drop-shadow(-5px 0 0 rgba(255, 0, 80, 0.65))
           drop-shadow(0 0 14px rgba(255, 255, 255, 0.35));
         animation: pulse 3s ease-in-out infinite;
       }
@@ -100,7 +114,8 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
         text-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
       }
 
-      .latest-track a:hover {
+      .latest-track a:hover,
+      .latest-track a:focus {
         text-decoration: underline;
       }
 
@@ -124,9 +139,12 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
         border: 1px solid rgba(255,255,255,0.1);
       }
 
-      .hero-links a:hover {
+      .hero-links a:hover,
+      .hero-links a:focus {
         background: rgba(255,255,255,0.15);
         transform: translateY(-2px);
+        outline: 2px solid #ff6b35;
+        outline-offset: 2px;
       }
 
       .video-grid {
@@ -183,7 +201,6 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
         text-decoration: underline;
       }
 
-      /* Portrait at the end */
       .portrait {
         display: block;
         margin: 3rem auto;
@@ -203,24 +220,30 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
     <main>
       <!-- Hero Section -->
       <section class="hero">
-        <img class="logo" src="/images/iii_orange_organic.png" alt="IIITHRIII logo" />
+        <img 
+          class="logo" 
+          src="/images/iii_orange_organic.png" 
+          alt="IIITHRIII – Drum & Bass artist logo" 
+          loading="lazy"
+        />
         <h1>IIITHRIII</h1>
-        <p><em>Montreal - Canada | Music Producer, DJ and Art Director</em></p>
+        <p><em>Montréal - Canada | Music Producer, DJ and Art Director</em></p>
 
-        <!-- LATEST TRACK: EMPIRE (linked) -->
+        <!-- LATEST TRACK -->
         <div class="latest-track">
           <a href="https://soundcloud.com/iiithriii/empire" target="_blank" rel="noopener">
             LATEST TRACK: EMPIRE
           </a>
         </div>
 
-        <!-- Links from Linktree (mentorship removed) -->
+        <!-- Links -->
         <div class="hero-links">
           <a href="https://instagram.com/iiithriii" target="_blank" rel="noopener">Instagram</a>
           <a href="https://iiithriii.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a>
           <a href="https://youtube.com/@IIITHRIII" target="_blank" rel="noopener">YouTube</a>
           <a href="https://www.najimfilali.com" target="_blank" rel="noopener">Visuals</a>
           <a href="mailto:najim@thesoukfactory.com">Contact</a>
+          <a href="mailto:najim@thesoukfactory.com?subject=Booking%20Inquiry%20-%20IIITHRIII">Book</a>
         </div>
       </section>
 
@@ -249,11 +272,11 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
       <!-- Bio -->
       <div class="bio">
         <p>
-          IIITHRIII ( pronounced i three ) is a Drum and Bass producer and DJ based in Montréal, Canada, shaped by breakcore’s chaotic energy and jungle’s raw power. Known for intricate sound design, relentless rhythms, and surgical precision, he pushes the boundaries of the Montréal underground Drum &amp; Bass scene with performances that are as explosive as they are technically refined.
+          IIITHRIII (pronounced i-three) is a Drum and Bass producer and DJ based in Montréal, Canada, shaped by breakcore’s chaotic energy and jungle’s raw power. Known for intricate sound design, relentless rhythms, and surgical precision, he pushes the boundaries of the Montréal underground Drum &amp; Bass scene with performances that are as explosive as they are technically refined.
         </p>
 
         <p>
-          He has shared the stage with respected artists such as Monty, Kid Koala, Sicknote, Nagazaki, Iridium, and Okkoto, building a reputation as a compelling live D&amp;B act in Montréal.
+          He has shared the stage with respected artists such as Monty, Kid Koala, Sicknote, T & Sugah and more, building a reputation as a compelling live D&amp;B act in Montréal.
         </p>
 
         <blockquote>
@@ -263,8 +286,6 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
         <p>
           Whether performing at local venues or crafting high-energy tracks in the studio, IIITHRIII delivers a distinctive Drum &amp; Bass experience rooted in Montréal’s electronic music culture.
         </p>
-
-       
       </div>
 
       <!-- Portrait Photo -->
@@ -272,6 +293,7 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
         class="portrait"
         src="/images/session.png"
         alt="IIITHRIII – Drum & Bass DJ and Art Director in Montréal"
+        loading="lazy"
       />
     </main>
   </body>
