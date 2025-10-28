@@ -1,0 +1,291 @@
+---
+// StickerPricing.astro — Final version for iiithriii.com
+// Business: The Souk Galaxy | Printer: Epson P5370 | Made in Montréal
+
+const pricingData = [
+  { size: '2" × 2"',   q25: 30, q50: 55, q100: 90, q250: 190, q500: 340 },
+  { size: '3" × 3"',   q25: 60, q50: 110, q100: 180, q250: 380, q500: 680 },
+  { size: '4" × 4"',   q25: 93, q50: 170, q100: 280, q250: 590, q500: 1050 },
+  { size: '5" × 5"',   q25: 107, q50: 195, q100: 320, q250: 675, q500: 1200 },
+  { size: '6" × 6"',   q25: 133, q50: 245, q100: 400, q250: 845, q500: 1500 },
+  { size: '8" × 8"',   q25: 167, q50: 305, q100: 500, q250: 1055, q500: 1875 },
+  { size: '10" × 10"', q25: 200, q50: 365, q100: 600, q250: 1265, q500: 2250 },
+];
+
+const email = "najim@thesoukfactory.com";
+const instagramUrl = "https://www.instagram.com/thesoukgalaxy/";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Souk Galaxy — Sticker Pricing</title>
+  <style>
+    /* FULL BLEED: Remove all default spacing */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      /* Prevent scrollbar from shifting layout */
+      overflow-y: scroll;
+      /* Ensure no margin/padding leaks */
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f0f0f;
+      color: #f0f0f0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .sticker-section {
+      background: #0f0f0f;
+      color: #f0f0f0;
+      padding: 3rem 1.5rem;
+      width: 100%;
+      /* Ensure it stretches fully */
+      margin: 0;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+      color: white;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .included-box,
+    .order-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .included-box h3,
+    .order-box h3 {
+      margin-top: 0;
+      color: white;
+      font-size: 1.25rem;
+    }
+
+    .included-box ul,
+    .order-box ol {
+      padding-left: 1.25rem;
+      margin: 0.75rem 0;
+      color: #e0e0e0;
+    }
+
+    .included-box li,
+    .order-box li {
+      margin-bottom: 0.4rem;
+    }
+
+    .tax-note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      color: #e0e0e0;
+    }
+
+    .pricing-table th,
+    .pricing-table td {
+      padding: 0.75rem 0.5rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pricing-table th {
+      color: #ccc;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .price {
+      font-weight: bold;
+      color: white;
+      display: block;
+    }
+
+    small {
+      color: #888;
+      font-size: 0.85em;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      margin: 2rem 0;
+      width: 100%;
+    }
+
+    .quote {
+      text-align: center;
+      font-style: italic;
+      color: #ccc;
+      margin-top: 2rem;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .instagram-cta {
+      text-align: center;
+      margin-top: 2.5rem;
+      color: #aaa;
+      font-size: 0.95rem;
+    }
+
+    .instagram-cta a,
+    a {
+      color: #ff6b35;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+
+    /* Mobile: stack table rows */
+    @media (max-width: 600px) {
+      .pricing-table,
+      .pricing-table tbody,
+      .pricing-table tr,
+      .pricing-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .pricing-table thead {
+        display: none;
+      }
+
+      .pricing-table tr {
+        margin-bottom: 1.25rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .pricing-table td {
+        text-align: left;
+        padding-left: 0;
+        position: relative;
+        padding-top: 0.8rem;
+      }
+
+      .pricing-table td:before {
+        content: attr(data-label) ": ";
+        font-weight: bold;
+        color: #ccc;
+        display: inline-block;
+        width: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="sticker-section">
+    <div class="container">
+      <h2 class="section-title">🛸 The Souk Galaxy — Sticker Pricing 🪐</h2>
+      <p class="subtitle">
+        Museum-grade stickers • Made in Montréal • Same final price as mass printers — better quality, faster, human-made by an world-renowned Visual Artist and Art Director.
+      </p>
+
+      <div class="included-box">
+        <h3>✅ What’s Included</h3>
+        <ul>
+          <li>Archival print (High End commercial art printer, 10-color UltraChrome ink, 300+ DPI)</li>
+          <li>UV lamination (matte or gloss), water, tear and time resistant</li>
+          <li>Precision die-cut or Kiss-cut</li>
+          <li>Digital proof within 48h</li>
+          <li>Hand-inspected for color &amp; quality</li>
+          <li>Free Local pickup (Montréal) or Canada-wide shipping</li>
+        </ul>
+      </div>
+
+      <div class="table-container">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>25</th>
+              <th>50</th>
+              <th>100</th>
+              <th>250</th>
+              <th>500</th>
+            </tr>
+          </thead>
+          <tbody>
+            {pricingData.map((row) => (
+              <tr>
+                <td data-label="Size">{row.size}</td>
+                <td data-label="25"><span class="price">${row.q25}</span><br/><small>(${(row.q25 / 25).toFixed(2)})</small></td>
+                <td data-label="50"><span class="price">${row.q50}</span><br/><small>(${(row.q50 / 50).toFixed(2)})</small></td>
+                <td data-label="100"><span class="price">${row.q100}</span><br/><small>(${(row.q100 / 100).toFixed(2)})</small></td>
+                <td data-label="250"><span class="price">${row.q250}</span><br/><small>(${(row.q250 / 250).toFixed(2)})</small></td>
+                <td data-label="500"><span class="price">${row.q500}</span><br/><small>(${(row.q500 / 500).toFixed(2)})</small></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="order-box">
+        <h3>📩 How to Order</h3>
+        <ol>
+          <li>Email <a href={`mailto:${email}`}>{email}</a></li>
+          <li>Include: <strong>size</strong>, <strong>quantity</strong> (min. 25), and <strong>artwork</strong> (300 DPI PNG, JPEG or PDF)</li>
+          <li>Get quote + proof within 48h → approve → print → pickup/ship!<br/>
+            <small>(File prep quoted separately if needed)</small>
+          </li>
+        </ol>
+        <p class="tax-note">
+          💡 Example: 100 × 2"×2" = $90 + $13.48 tax = <strong>$103.48 total</strong>
+        </p>
+        <p class="tax-note">
+         Taxes will be calculated at checkout.
+        </p>
+      </div>
+
+      <div class="instagram-cta">
+        <p>See stickers in the wild → <a href={instagramUrl} target="_blank" rel="noopener">@thesoukgalaxy on Instagram</a></p>
+      </div>
+
+      <footer class="quote">
+        “Not just stickers — cultural artifacts printed as the artist intended.”<br/>
+        — The Souk Galaxy, by "IIITHRIII"
+      </footer>
+    </div>
+  </section>
+</body>
+</html>
