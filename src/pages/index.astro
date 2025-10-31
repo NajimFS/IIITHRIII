@@ -1,4 +1,11 @@
 ---
+// Declare global for future GA4 compatibility (optional but safe)
+declare global {
+  interface Window {
+    dataLayer?: any[];
+  }
+}
+
 // Import the Astro Image component
 import { Image } from 'astro:assets';
 
@@ -13,7 +20,7 @@ import gig4 from '../assets/images/gig4.png';
 // SEO & metadata
 const siteUrl = 'https://iiithriii.com';
 const title = 'IIITHRIII | Drum & Bass DJ & Producer in Montréal | Art Director';
-const description = 'IIITHRIII is a Montréal-based Drum & Bass DJ and producer shaped by breakcore and jungle, also working as an Art Director in games and visual media. Known for intricate sound design, explosive live sets, and deep roots in the local underground scene.';
+const description = 'Montréal-based Drum & Bass DJ IIITHRIII (Najim Filali Saksak) delivers explosive live sets in Montreal’s underground scene. Also an AAA Art Director for games like Star Wars Eclipse. Book for Montreal events or global art direction.';
 const imageUrl = `${siteUrl}/images/iii_orange_organic.png`;
 const youtubeVideoId1 = 'XfEDohQeE4A'; // Live set
 const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
@@ -25,7 +32,12 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="IIITHRIII, Drum and Bass Montreal, DNB DJ Canada, breakcore producer, jungle music, Art Director Montreal, electronic music Montreal, live drum and bass set, Montréal underground DJ, sound design, visual artist" />
+    <meta name="keywords" content="Drum and Bass DJ Montréal, DNB Producer Montreal, IIITHRIII Montreal, underground DJ Canada, breakcore producer, jungle music Montreal, Art Director Montreal, electronic music Montreal, live drum and bass set, Montréal underground DJ, sound design, visual artist" />
+
+    <!-- Geo tags for local SEO -->
+    <meta name="geo.position" content="45.5017;-73.5673" />
+    <meta name="geo.placename" content="Montréal, QC" />
+    <meta name="geo.region" content="CA-QC" />
 
     <link rel="canonical" href={siteUrl} />
     <link rel="icon" href="/favicon.ico" />
@@ -251,6 +263,51 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
         color: white;
       }
 
+      /* Booking CTA */
+      .booking-cta {
+        text-align: center;
+        margin: 3rem auto;
+        padding: 1.5rem;
+        background: rgba(255,107,53,0.1);
+        border-radius: 16px;
+        max-width: 600px;
+      }
+
+      .booking-cta h2 {
+        color: #ff6b35;
+        margin-top: 0;
+      }
+
+      .booking-cta a {
+        display: inline-block;
+        background: #ff6b35;
+        color: #000;
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        margin-top: 0.5rem;
+      }
+
+      .booking-cta a:hover {
+        background: #ff8c5a;
+        transform: translateY(-2px);
+      }
+
+      /* Instagram CTA */
+      .instagram-cta {
+        max-width: 300px;
+        margin: 2rem auto;
+      }
+
+      .instagram-cta a {
+        display: block;
+        color: #ff6b35;
+        text-align: center;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
       /* Past Gigs Section */
       .gigs {
         padding: 3rem 1.5rem;
@@ -310,7 +367,7 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
       <section class="hero">
         <Image
           src={iiiOrangeOrganic}
-          alt="IIITHRIII – Drum & Bass artist logo"
+          alt="IIITHRIII – stylized orange organic logo for Montréal Drum & Bass artist and Art Director"
           loading="lazy"
           class="logo"
         />
@@ -377,12 +434,21 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
         </p>
       </div>
 
+      <!-- Booking CTA -->
+      <div class="booking-cta">
+        <h2>Book IIITHRIII for Your Event</h2>
+        <p>Available for live sets, DJ gigs, and art direction in Montréal and worldwide.</p>
+        <a href="mailto:najim@thesoukfactory.com?subject=Booking%20Inquiry%20-%20IIITHRIII">
+          Send Booking Request
+        </a>
+      </div>
+
       <!-- Clickable portrait -->
       <figure style="text-align: center; margin: 2rem auto; max-width: 200px;">
         <a href="https://www.instagram.com/iiithriii/" target="_blank" rel="noopener" style="display: block; text-decoration: none; color: inherit;">
           <Image
             src={sessionImage}
-            alt="IIITHRIII performing live with The Session in Montréal"
+            alt="Najim Filali Saksak (IIITHRIII) DJing live with The Session collective at a packed underground venue in Montréal, wearing a black hoodie under red stage lights"
             width={200}
             height={Math.round(200 * sessionImage.height / sessionImage.width)}
             loading="lazy"
@@ -393,6 +459,13 @@ const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
           Live with The Session • Montréal
         </figcaption>
       </figure>
+
+      <!-- Instagram Stories CTA -->
+      <div class="instagram-cta">
+        <a href="https://www.instagram.com/iiithriii/" target="_blank" rel="noopener">
+          📸 View Latest Instagram Stories
+        </a>
+      </div>
 
       <!-- Past Gigs / Flyers (CLICKABLE) -->
       <section class="gigs">
