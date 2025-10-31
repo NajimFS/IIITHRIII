@@ -1,13 +1,33 @@
-<!DOCTYPE html>
+---
+// Import the Astro Image component
+import { Image } from 'astro:assets';
+
+// Import image assets (Astro v5+)
+import iiiOrangeOrganic from '../assets/images/iii_orange_organic.png';
+import sessionImage from '../assets/images/session.png';
+import gig1 from '../assets/images/gig1.png';
+import gig2 from '../assets/images/gig2.jpg';
+import gig3 from '../assets/images/gig3.png';
+import gig4 from '../assets/images/gig4.png';
+
+// SEO & metadata
+const siteUrl = 'https://iiithriii.com';
+const title = 'IIITHRIII | Drum & Bass DJ & Producer in Montréal | Art Director';
+const description = 'IIITHRIII is a Montréal-based Drum & Bass DJ and producer shaped by breakcore and jungle, also working as an Art Director in games and visual media. Known for intricate sound design, explosive live sets, and deep roots in the local underground scene.';
+const imageUrl = `${siteUrl}/images/iii_orange_organic.png`;
+const youtubeVideoId1 = 'XfEDohQeE4A'; // Live set
+const youtubeVideoId2 = 'gq2iwq-vrpQ'; // Studio session
+---
+
 <html lang="en-CA">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>IIITHRIII | Drum & Bass DJ & Producer in Montréal | Art Director</title>
-    <meta name="description" content="IIITHRIII is a Montréal-based Drum & Bass DJ and producer shaped by breakcore and jungle, also working as an Art Director in games and visual media. Known for intricate sound design, explosive live sets, and deep roots in the local underground scene." />
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <meta name="keywords" content="IIITHRIII, Drum and Bass Montreal, DNB DJ Canada, breakcore producer, jungle music, Art Director Montreal, electronic music Montreal, live drum and bass set, Montréal underground DJ, sound design, visual artist" />
 
-    <link rel="canonical" href="https://iiithriii.com" />
+    <link rel="canonical" href={siteUrl} />
     <link rel="icon" href="/favicon.ico" />
 
     <!-- Preconnect -->
@@ -22,23 +42,23 @@
     <!-- Open Graph -->
     <meta property="og:locale" content="en_CA" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="IIITHRIII | Drum & Bass DJ & Producer in Montréal | Art Director" />
-    <meta property="og:description" content="IIITHRIII is a Montréal-based Drum & Bass DJ and producer shaped by breakcore and jungle, also working as an Art Director in games and visual media. Known for intricate sound design, explosive live sets, and deep roots in the local underground scene." />
-    <meta property="og:image" content="https://iiithriii.com/images/iii_orange_organic.png" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
     <meta property="og:image:alt" content="IIITHRIII – Drum & Bass DJ, Producer, and Art Director from Montréal" />
-    <meta property="og:url" content="https://iiithriii.com" />
+    <meta property="og:url" content={siteUrl} />
     <meta property="og:site_name" content="IIITHRIII" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="IIITHRIII | Drum & Bass DJ & Producer in Montréal | Art Director" />
-    <meta name="twitter:description" content="IIITHRIII is a Montréal-based Drum & Bass DJ and producer shaped by breakcore and jungle, also working as an Art Director in games and visual media. Known for intricate sound design, explosive live sets, and deep roots in the local underground scene." />
-    <meta name="twitter:image" content="https://iiithriii.com/images/iii_orange_organic.png" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
     <meta name="twitter:image:alt" content="IIITHRIII – Drum & Bass DJ, Producer, and Art Director from Montréal" />
 
     <!-- Structured Data: Person -->
     <script type="application/ld+json">
-{
+{{
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Najim Filali Saksak",
@@ -59,12 +79,12 @@
     "name": "Art Director",
     "occupationLocation": "Montréal, QC"
   }
-}
+}}
     </script>
 
     <!-- Structured Data: MusicGroup -->
     <script type="application/ld+json">
-{
+{{
   "@context": "https://schema.org",
   "@type": "MusicGroup",
   "name": "IIITHRIII",
@@ -82,7 +102,7 @@
     "@type": "Place",
     "name": "Montréal, Canada"
   }
-}
+}}
     </script>
 
     <style>
@@ -251,7 +271,24 @@
         color: inherit;
       }
 
-      .flyer-grid img {
+      /* Image styling classes */
+      .session-image {
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: block;
+        cursor: pointer;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      .session-image:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 28px rgba(255,107,53,0.4);
+      }
+
+      .flyer-image {
         width: 100%;
         height: auto;
         border-radius: 12px;
@@ -261,7 +298,7 @@
         display: block;
       }
 
-      .flyer-grid img:hover {
+      .flyer-image:hover {
         transform: scale(1.03);
         box-shadow: 0 8px 28px rgba(255,107,53,0.4);
         cursor: pointer;
@@ -271,11 +308,11 @@
   <body>
     <main>
       <section class="hero">
-        <img 
-          class="logo" 
-          src="/images/iii_orange_organic.png" 
-          alt="IIITHRIII – Drum & Bass artist logo" 
+        <Image
+          src={iiiOrangeOrganic}
+          alt="IIITHRIII – Drum & Bass artist logo"
           loading="lazy"
+          class="logo"
         />
         <h1>IIITHRIII</h1>
         <p><em>Montréal - Canada | Music Producer, DJ and Art Director</em></p>
@@ -286,7 +323,6 @@
           </a>
         </div>
 
-        <!-- ✅ SoundCloud added -->
         <div class="hero-links">
           <a href="https://instagram.com/iiithriii" target="_blank" rel="noopener">Instagram</a>
           <a href="https://soundcloud.com/iiithriii" target="_blank" rel="noopener">SoundCloud</a>
@@ -301,7 +337,7 @@
       <div class="video-grid">
         <div class="video-container">
           <iframe
-            src="https://www.youtube.com/embed/XfEDohQeE4A?rel=0"
+            src={`https://www.youtube.com/embed/${youtubeVideoId1}?rel=0`}
             title="IIITHRIII Live Set"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
@@ -310,7 +346,7 @@
         </div>
         <div class="video-container">
           <iframe
-            src="https://www.youtube.com/embed/gq2iwq-vrpQ?start=998&rel=0"
+            src={`https://www.youtube.com/embed/${youtubeVideoId2}?start=998&rel=0`}
             title="IIITHRIII Studio Session"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
@@ -344,22 +380,13 @@
       <!-- Clickable portrait -->
       <figure style="text-align: center; margin: 2rem auto; max-width: 200px;">
         <a href="https://www.instagram.com/iiithriii/" target="_blank" rel="noopener" style="display: block; text-decoration: none; color: inherit;">
-          <img
-            src="/images/session.png"
+          <Image
+            src={sessionImage}
             alt="IIITHRIII performing live with The Session in Montréal"
+            width={200}
+            height={Math.round(200 * sessionImage.height / sessionImage.width)}
             loading="lazy"
-            style="
-              width: 100%;
-              height: auto;
-              border-radius: 12px;
-              border: 1px solid rgba(255,255,255,0.1);
-              box-shadow: 0 6px 16px rgba(0,0,0,0.4);
-              transition: transform 0.2s, box-shadow 0.2s;
-              cursor: pointer;
-              display: block;
-            "
-            onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 24px rgba(255,107,53,0.3)';"
-            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.4)';"
+            class="session-image"
           />
         </a>
         <figcaption style="font-size: 0.85rem; color: #aaa; margin-top: 0.5rem;">
@@ -372,31 +399,35 @@
         <h2>Past Performances</h2>
         <div class="flyer-grid">
           <a href="https://www.instagram.com/sicknote_official/" target="_blank" rel="noopener">
-            <img 
-              src="/images/gig1.png" 
+            <Image
+              src={gig1}
               alt="Flyer featuring Sicknote – Montréal"
               loading="lazy"
+              class="flyer-image"
             />
           </a>
           <a href="https://www.instagram.com/bluedogmtl/" target="_blank" rel="noopener">
-            <img 
-              src="/images/gig2.jpg" 
+            <Image
+              src={gig2}
               alt="Flyer: Event at Bluedog – Montréal"
               loading="lazy"
+              class="flyer-image"
             />
           </a>
           <a href="https://www.instagram.com/montysbeats/" target="_blank" rel="noopener">
-            <img 
-              src="/images/gig3.png" 
+            <Image
+              src={gig3}
               alt="Flyer featuring Monty – Montréal"
               loading="lazy"
+              class="flyer-image"
             />
           </a>
           <a href="https://www.instagram.com/t_and_sugah/" target="_blank" rel="noopener">
-            <img 
-              src="/images/gig4.png" 
+            <Image
+              src={gig4}
               alt="Flyer featuring T & Sugah – Montréal"
               loading="lazy"
+              class="flyer-image"
             />
           </a>
         </div>
